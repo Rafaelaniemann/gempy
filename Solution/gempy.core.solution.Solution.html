@@ -1,0 +1,826 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>gempy.core.solution.Solution &#8212; GemPy 2.1.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GemPy Tutorials" href="../examples/index.html" />
+    <link rel="prev" title="gempy.core.interpolator.InterpolatorGravity" href="../Interpolator/gempy.core.interpolator.InterpolatorGravity.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/./logos/gempy.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">GemPy</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=cgre-aachen&repo=gempy&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a class="badge" href="https://travis-ci.org/cgre-aachen/gempy">
+    <img
+        alt="https://secure.travis-ci.org/cgre-aachen/gempy.svg?branch=master"
+        src="https://secure.travis-ci.org/cgre-aachen/gempy.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">GemPy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../code.html">Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code.html#gempy-api">GemPy API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#model">Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#plot">Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#grids">Grids</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#geometric-data">Geometric Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#interpolator">Interpolator</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../code.html#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GemPy Tutorials</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../code.html">Code</a><ul>
+      <li>Previous: <a href="../Interpolator/gempy.core.interpolator.InterpolatorGravity.html" title="previous chapter">gempy.core.interpolator.InterpolatorGravity</a></li>
+      <li>Next: <a href="../examples/index.html" title="next chapter">GemPy Tutorials</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="gempy-core-solution-solution">
+<h1>gempy.core.solution.Solution<a class="headerlink" href="#gempy-core-solution-solution" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="gempy.core.solution.Solution">
+<em class="property">class </em><code class="sig-prename descclassname">gempy.core.solution.</code><code class="sig-name descname">Solution</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../Data/gempy.core.data.Grid.html#gempy.core.data.Grid" title="gempy.core.data.Grid">gempy.core.data.Grid</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">surfaces</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../Data/gempy.core.data.Surfaces.html#gempy.core.data.Surfaces" title="gempy.core.data.Surfaces">gempy.core.data.Surfaces</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">series</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../Data/gempy.core.data_modules.stack.Series.html#gempy.core.data_modules.stack.Series" title="gempy.core.data_modules.stack.Series">gempy.core.data_modules.stack.Series</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class stores the output of the interpolation and the necessary objects to visualize and manipulate this data.
+Depending on the activated grid (see <code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code>) a different number of properties are returned returned:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>grid</strong> (<a class="reference internal" href="../Data/gempy.core.data.Grid.html#gempy.core.data.Grid" title="gempy.core.data.Grid"><em>Grid</em></a>) – [s0]  Class to generate grids.</p></li>
+<li><p><strong>surfaces</strong> (<a class="reference internal" href="../Data/gempy.core.data.Surfaces.html#gempy.core.data.Surfaces" title="gempy.core.data.Surfaces"><em>Surfaces</em></a>) – [s1] Class that contains the surfaces of the model and the values of each of them.</p></li>
+<li><p><strong>series</strong> (<a class="reference internal" href="../Data/gempy.core.data_modules.stack.Series.html#gempy.core.data_modules.stack.Series" title="gempy.core.data_modules.stack.Series"><em>Series</em></a>) – [s2]  Class that contains the functionality and attributes related to the series. Notice that series does not onlyrefers to stratigraphic series but to any set of surfaces which will be interpolated together (comfortably).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.grid">
+<code class="sig-name descname">grid</code><a class="headerlink" href="#gempy.core.solution.Solution.grid" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../Data/gempy.core.data.Grid.html#gempy.core.data.Grid" title="gempy.core.data.Grid">Grid</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.surfaces">
+<code class="sig-name descname">surfaces</code><a class="headerlink" href="#gempy.core.solution.Solution.surfaces" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../Data/gempy.core.data.Surfaces.html#gempy.core.data.Surfaces" title="gempy.core.data.Surfaces">Surfaces</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.series">
+<code class="sig-name descname">series</code><a class="headerlink" href="#gempy.core.solution.Solution.series" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="../Data/gempy.core.data_modules.stack.Series.html#gempy.core.data_modules.stack.Series" title="gempy.core.data_modules.stack.Series">Series</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.weights_vector">
+<code class="sig-name descname">weights_vector</code><a class="headerlink" href="#gempy.core.solution.Solution.weights_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s3] Numpy array that containing the kriging weights for each input data sorted by series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.scalar_field_at_surface_points">
+<code class="sig-name descname">scalar_field_at_surface_points</code><a class="headerlink" href="#gempy.core.solution.Solution.scalar_field_at_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s4] Value of the scalar field at each interface. Axis 0 is each series and axis 1 contain each surface in orde</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.block_at_surface_points">
+<code class="sig-name descname">block_at_surface_points</code><a class="headerlink" href="#gempy.core.solution.Solution.block_at_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s5] 3D array with all interpolated values for a given series and at the interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.mask_at_surface_points">
+<code class="sig-name descname">mask_at_surface_points</code><a class="headerlink" href="#gempy.core.solution.Solution.mask_at_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s6] Boolean array containing the logic to combine multiple series to obtain the final model at each interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.values_at_surface_points">
+<code class="sig-name descname">values_at_surface_points</code><a class="headerlink" href="#gempy.core.solution.Solution.values_at_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s7] 2D array with the final values once the superposition of series has been carried out at each interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.lith_block">
+<code class="sig-name descname">lith_block</code><a class="headerlink" href="#gempy.core.solution.Solution.lith_block" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s8]  Array with the id of each layer evaluated in each point of the regular grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.scalar_field_matrix">
+<code class="sig-name descname">scalar_field_matrix</code><a class="headerlink" href="#gempy.core.solution.Solution.scalar_field_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s9] Value of the scalar field at each value of the regular grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.block_matrix">
+<code class="sig-name descname">block_matrix</code><a class="headerlink" href="#gempy.core.solution.Solution.block_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s10] 3D array with all interpolated values for a given series and at each value of the regular grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.mask_matrix">
+<code class="sig-name descname">mask_matrix</code><a class="headerlink" href="#gempy.core.solution.Solution.mask_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s11] Boolean array containing the logic to combine multiple series to obtain the final model at each value of the regular grid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.mask_matrix_pad">
+<code class="sig-name descname">mask_matrix_pad</code><a class="headerlink" href="#gempy.core.solution.Solution.mask_matrix_pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>mask matrix padded 2 block in order to guarantee that the layers intersect each
+other after marching cubes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.values_matrix">
+<code class="sig-name descname">values_matrix</code><a class="headerlink" href="#gempy.core.solution.Solution.values_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s12] 2D array with the final values once the superposition of series has been carried out at each value of the regular grid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.vertices">
+<code class="sig-name descname">vertices</code><a class="headerlink" href="#gempy.core.solution.Solution.vertices" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s13] List of numpy arrays containing the XYZ coordinates of each triangle vertex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a>[np.array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.edges">
+<code class="sig-name descname">edges</code><a class="headerlink" href="#gempy.core.solution.Solution.edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s14] List of numpy arrays containing the indices of the vertices numpy arrays that compose each individual triangle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a>[np.array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.solution.Solution.geological_map">
+<code class="sig-name descname">geological_map</code><a class="headerlink" href="#gempy.core.solution.Solution.geological_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s15] 2D array containing the lithologies at the surfaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples using Solution</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Chapter 1.1 -Basics of geological modeling with GemPy"><div class="figure align-default" id="id9">
+<img alt="../_images/sphx_glr_ch1-1_basics_thumb.png" src="../_images/sphx_glr_ch1-1_basics_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../examples/ch1-Fundamentals/ch1-1_basics.html#sphx-glr-examples-ch1-fundamentals-ch1-1-basics-py"><span class="std std-ref">Chapter 1.1 -Basics of geological modeling with GemPy</span></a></span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-clear"></div><p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.__init__" title="gempy.core.solution.Solution.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([grid, surfaces, series])</p></td>
+<td><p>Initialize self.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.compute_all_surfaces" title="gempy.core.solution.Solution.compute_all_surfaces"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_all_surfaces</span></code></a>(**kwargs)</p></td>
+<td><p>Compute all surfaces of the model given the geological features rules.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.compute_marching_cubes_regular_grid" title="gempy.core.solution.Solution.compute_marching_cubes_regular_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_marching_cubes_regular_grid</span></code></a>(level, …)</p></td>
+<td><p>Compute the surface (vertices and edges) of a given surface by computing marching cubes (by skimage)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.mask_topo" title="gempy.core.solution.Solution.mask_topo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask_topo</span></code></a>(mask_matrix)</p></td>
+<td><p>Add the masked elements of the topography to the masking matrix</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.padding_mask_matrix" title="gempy.core.solution.Solution.padding_mask_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">padding_mask_matrix</span></code></a>([mask_topography, shift])</p></td>
+<td><p>Pad as many elements as in shift to the masking arrays.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.set_solution_to_custom" title="gempy.core.solution.Solution.set_solution_to_custom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_solution_to_custom</span></code></a>(values)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.set_solution_to_regular_grid" title="gempy.core.solution.Solution.set_solution_to_regular_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_solution_to_regular_grid</span></code></a>(values[, …])</p></td>
+<td><p>If regular grid is active set all the solution objects dependent on them and compute mesh.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.set_solution_to_sections" title="gempy.core.solution.Solution.set_solution_to_sections"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_solution_to_sections</span></code></a>(values)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.set_solution_to_topography" title="gempy.core.solution.Solution.set_solution_to_topography"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_solution_to_topography</span></code></a>(values)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.set_values_to_regular_grid" title="gempy.core.solution.Solution.set_values_to_regular_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_values_to_regular_grid</span></code></a>(values)</p></td>
+<td><p>Set all solution values to the correspondent attribute</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.solution.Solution.set_values_to_surface_points" title="gempy.core.solution.Solution.set_values_to_surface_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_values_to_surface_points</span></code></a>(values)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../Data/gempy.core.data.Grid.html#gempy.core.data.Grid" title="gempy.core.data.Grid">gempy.core.data.Grid</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">surfaces</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../Data/gempy.core.data.Surfaces.html#gempy.core.data.Surfaces" title="gempy.core.data.Surfaces">gempy.core.data.Surfaces</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">series</span><span class="p">:</span> <span class="n"><a class="reference internal" href="../Data/gempy.core.data_modules.stack.Series.html#gempy.core.data_modules.stack.Series" title="gempy.core.data_modules.stack.Series">gempy.core.data_modules.stack.Series</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.set_solution_to_regular_grid">
+<code class="sig-name descname">set_solution_to_regular_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">compute_mesh</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)">bool</a></span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">compute_mesh_options</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)">dict</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.set_solution_to_regular_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.set_solution_to_regular_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>If regular grid is active set all the solution objects dependent on them and compute mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>[</em><em>np.array</em><em>]</em>) – <p>list with result of the theano evaluation (values returned by
+<a class="reference internal" href="../GemPy API/gempy.compute_model.html#gempy.compute_model" title="gempy.compute_model"><code class="xref py py-func docutils literal notranslate"><span class="pre">gempy.compute_model()</span></code></a> function):</p>
+<blockquote>
+<div><ul>
+<li><p>block_matrix</p></li>
+<li><p>weights_vector</p></li>
+<li><p>scalar_field_matrix</p></li>
+<li><p>scalar field at interfaces</p></li>
+<li><p>mask_matrix</p></li>
+</ul>
+</div></blockquote>
+</p></li>
+<li><p><strong>compute_mesh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – if True perform marching cubes algorithm to recover the surface mesh from the
+implicit model.</p></li>
+<li><p><strong>compute_mesh_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.8)"><em>dict</em></a>) – options for the marching cube function.
+1) rescale: True</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.set_solution_to_custom">
+<code class="sig-name descname">set_solution_to_custom</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.set_solution_to_custom"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.set_solution_to_custom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.set_solution_to_topography">
+<code class="sig-name descname">set_solution_to_topography</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.set_solution_to_topography"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.set_solution_to_topography" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.set_solution_to_sections">
+<code class="sig-name descname">set_solution_to_sections</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.set_solution_to_sections"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.set_solution_to_sections" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.set_values_to_regular_grid">
+<code class="sig-name descname">set_values_to_regular_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.set_values_to_regular_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.set_values_to_regular_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set all solution values to the correspondent attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>np.ndarray</em>) – values returned by <cite>function: gempy.compute_model</cite> function</p></li>
+<li><p><strong>compute_mesh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – if true compute automatically the grid</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.set_values_to_surface_points">
+<code class="sig-name descname">set_values_to_surface_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">values</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.set_values_to_surface_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.set_values_to_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.compute_marching_cubes_regular_grid">
+<code class="sig-name descname">compute_marching_cubes_regular_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">level</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></span></em>, <em class="sig-param"><span class="n">scalar_field</span></em>, <em class="sig-param"><span class="n">mask_array</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">classic</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">rescale</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.compute_marching_cubes_regular_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.compute_marching_cubes_regular_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the surface (vertices and edges) of a given surface by computing marching cubes (by skimage)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – value of the scalar field at the surface</p></li>
+<li><p><strong>scalar_field</strong> (<em>np.array</em>) – scalar_field vector objects</p></li>
+<li><p><strong>mask_array</strong> (<em>np.array</em>) – mask vector with trues where marching cubes has to be performed</p></li>
+<li><p><strong>classic</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – if True use original marching cubes without the masking functionality. 07/19 this is a
+necessary function until the pull request gets accepted.</p></li>
+<li><p><strong>**kwargs</strong> – skimage.measure.marching_cubes_lewiner args (see below)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>vertices, simplices, normals, values</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+<dl>
+<dt>Marching cubes Docs:</dt><dd><p>(inserted)</p>
+<blockquote>
+<div><p>Lewiner marching cubes algorithm to find surfaces in 3d volumetric data.</p>
+<p>In contrast to <code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code>, this algorithm is faster,</p>
+<p>resolves ambiguities, and guarantees topologically correct results.</p>
+<p>Therefore, this algorithm generally a better choice, unless there</p>
+<p>is a specific need for the classic algorithm.</p>
+<p>Parameters</p>
+<p>volume : (M, N, P) array</p>
+<blockquote>
+<div><p>Input data volume to find isosurfaces. Will internally be</p>
+<p>converted to float32 if necessary.</p>
+</div></blockquote>
+<p>level : float</p>
+<blockquote>
+<div><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not</p>
+<p>given or None, the average of the min and max of vol is used.</p>
+</div></blockquote>
+<p>spacing : length-3 tuple of floats</p>
+<blockquote>
+<div><p>Voxel spacing in spatial dimensions corresponding to numpy array</p>
+<p>indexing dimensions (M, N, P) as in <cite>volume</cite>.</p>
+</div></blockquote>
+<p>gradient_direction : string</p>
+<blockquote>
+<div><p>Controls if the mesh was generated from an isosurface with gradient</p>
+<p>descent toward objects of interest (the default), or the opposite,</p>
+<p>considering the <em>left-hand</em> rule.</p>
+<p>The two options are:</p>
+<ul class="simple">
+<li><p>descent : Object was greater than exterior</p></li>
+<li><p>ascent : Exterior was greater than object</p></li>
+</ul>
+</div></blockquote>
+<p>step_size : int</p>
+<blockquote>
+<div><p>Step size in voxels. Default 1. Larger steps yield faster but</p>
+<p>coarser results. The result will always be topologically correct</p>
+<p>though.</p>
+</div></blockquote>
+<p>allow_degenerate : bool</p>
+<blockquote>
+<div><p>Whether to allow degenerate (i.e. zero-area) triangles in the</p>
+<p>end-result. Default True. If False, degenerate triangles are</p>
+<p>removed, at the cost of making the algorithm slower.</p>
+</div></blockquote>
+<p>use_classic : bool</p>
+<blockquote>
+<div><p>If given and True, the classic marching cubes by Lorensen (1987)</p>
+<p>is used. This option is included for reference purposes. Note</p>
+<p>that this algorithm has ambiguities and is not guaranteed to</p>
+<p>produce a topologically correct result. The results with using</p>
+<p>this option are <em>not</em> generally the same as the</p>
+<p><code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code> function.</p>
+</div></blockquote>
+<p>Returns</p>
+<p>verts : (V, 3) array</p>
+<blockquote>
+<div><p>Spatial coordinates for V unique mesh vertices. Coordinate order</p>
+<p>matches input <cite>volume</cite> (M, N, P).</p>
+</div></blockquote>
+<p>faces : (F, 3) array</p>
+<blockquote>
+<div><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.</p>
+<p>This algorithm specifically outputs triangles, so each face has</p>
+<p>exactly three indices.</p>
+</div></blockquote>
+<p>normals : (V, 3) array</p>
+<blockquote>
+<div><p>The normal direction at each vertex, as calculated from the</p>
+<p>data.</p>
+</div></blockquote>
+<p>values : (V, ) array</p>
+<blockquote>
+<div><p>Gives a measure for the maximum value of the data in the local region</p>
+<p>near each vertex. This can be used by visualization tools to apply</p>
+<p>a colormap to the mesh.</p>
+</div></blockquote>
+<p>Notes</p>
+<p>The algorithm [1] is an improved version of Chernyaev’s Marching</p>
+<p>Cubes 33 algorithm. It is an efficient algorithm that relies on</p>
+<p>heavy use of lookup tables to handle the many different cases,</p>
+<p>keeping the algorithm relatively easy. This implementation is</p>
+<p>written in Cython, ported from Lewiner’s C++ implementation.</p>
+<p>To quantify the area of an isosurface generated by this algorithm, pass</p>
+<p>verts and faces to <cite>skimage.measure.mesh_surface_area</cite>.</p>
+<p>Regarding visualization of algorithm output, to contour a volume</p>
+<p>named <cite>myvolume</cite> about the level 0.0, using the <code class="docutils literal notranslate"><span class="pre">mayavi</span></code> package:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">marching_cubes_lewiner</span><span class="p">(</span><span class="n">myvolume</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlab</span><span class="o">.</span><span class="n">triangular_mesh</span><span class="p">([</span><span class="n">vert</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
+
+<span class="gp">... </span>                     <span class="p">[</span><span class="n">vert</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
+
+<span class="gp">... </span>                     <span class="p">[</span><span class="n">vert</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
+
+<span class="gp">... </span>                     <span class="n">faces</span><span class="p">)</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+<p>Similarly using the <code class="docutils literal notranslate"><span class="pre">visvis</span></code> package:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">visvis</span> <span class="k">as</span> <span class="nn">vv</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">marching_cubes_lewiner</span><span class="p">(</span><span class="n">myvolume</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vv</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">verts</span><span class="p">),</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> 
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vv</span><span class="o">.</span><span class="n">use</span><span class="p">()</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span> 
+</pre></div>
+</div>
+<p>References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p>Thomas Lewiner, Helio Lopes, Antonio Wilson Vieira and Geovan</p>
+<p>Tavares. Efficient implementation of Marching Cubes’ cases with</p>
+<p>topological guarantees. Journal of Graphics Tools 8(2)</p>
+<p>pp. 1-15 (december 2003).</p>
+<p><a href="#id2"><span class="problematic" id="id3">:DOI:`10.1080/10867651.2003.10487582`</span></a></p>
+</dd>
+</dl>
+<p>See Also</p>
+<p>skimage.measure.marching_cubes_classic</p>
+<p>skimage.measure.mesh_surface_area</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.mask_topo">
+<code class="sig-name descname">mask_topo</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask_matrix</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.mask_topo"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.mask_topo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the masked elements of the topography to the masking matrix</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.padding_mask_matrix">
+<code class="sig-name descname">padding_mask_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask_topography</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">shift</span><span class="o">=</span><span class="default_value">2</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.padding_mask_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.padding_mask_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pad as many elements as in shift to the masking arrays. This is done to guarantee intersection of layers
+if masked marching cubes are done</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.solution.Solution.compute_all_surfaces">
+<code class="sig-name descname">compute_all_surfaces</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/solution.html#Solution.compute_all_surfaces"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.solution.Solution.compute_all_surfaces" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute all surfaces of the model given the geological features rules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> – skimage.measure.marching_cubes_lewiner args (see below)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>vertices and edges</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></p>
+</dd>
+</dl>
+<dl>
+<dt>Compute a single surface Doc:</dt><dd><p>(inserted)</p>
+<blockquote>
+<div><p>Compute the surface (vertices and edges) of a given surface by computing marching cubes (by skimage)</p>
+<p>Args:</p>
+<blockquote>
+<div><p>level (float): value of the scalar field at the surface</p>
+<p>scalar_field (np.array): scalar_field vector objects</p>
+<p>mask_array (np.array): mask vector with trues where marching cubes has to be performed</p>
+<p>classic (bool): if True use original marching cubes without the masking functionality. 07/19 this is a</p>
+<blockquote>
+<div><p>necessary function until the pull request gets accepted.</p>
+</div></blockquote>
+<p><a href="#id4"><span class="problematic" id="id5">**</span></a>kwargs: skimage.measure.marching_cubes_lewiner args (see below)</p>
+</div></blockquote>
+<p>Returns:</p>
+<blockquote>
+<div><p>list: vertices, simplices, normals, values</p>
+</div></blockquote>
+<p>Marching cubes Docs:</p>
+<blockquote>
+<div><p>(inserted)</p>
+<blockquote>
+<div><p>Lewiner marching cubes algorithm to find surfaces in 3d volumetric data.</p>
+<p>In contrast to <code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code>, this algorithm is faster,</p>
+<p>resolves ambiguities, and guarantees topologically correct results.</p>
+<p>Therefore, this algorithm generally a better choice, unless there</p>
+<p>is a specific need for the classic algorithm.</p>
+<p>Parameters</p>
+<p>volume : (M, N, P) array</p>
+<blockquote>
+<div><p>Input data volume to find isosurfaces. Will internally be</p>
+<p>converted to float32 if necessary.</p>
+</div></blockquote>
+<p>level : float</p>
+<blockquote>
+<div><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not</p>
+<p>given or None, the average of the min and max of vol is used.</p>
+</div></blockquote>
+<p>spacing : length-3 tuple of floats</p>
+<blockquote>
+<div><p>Voxel spacing in spatial dimensions corresponding to numpy array</p>
+<p>indexing dimensions (M, N, P) as in <cite>volume</cite>.</p>
+</div></blockquote>
+<p>gradient_direction : string</p>
+<blockquote>
+<div><p>Controls if the mesh was generated from an isosurface with gradient</p>
+<p>descent toward objects of interest (the default), or the opposite,</p>
+<p>considering the <em>left-hand</em> rule.</p>
+<p>The two options are:</p>
+<ul class="simple">
+<li><p>descent : Object was greater than exterior</p></li>
+<li><p>ascent : Exterior was greater than object</p></li>
+</ul>
+</div></blockquote>
+<p>step_size : int</p>
+<blockquote>
+<div><p>Step size in voxels. Default 1. Larger steps yield faster but</p>
+<p>coarser results. The result will always be topologically correct</p>
+<p>though.</p>
+</div></blockquote>
+<p>allow_degenerate : bool</p>
+<blockquote>
+<div><p>Whether to allow degenerate (i.e. zero-area) triangles in the</p>
+<p>end-result. Default True. If False, degenerate triangles are</p>
+<p>removed, at the cost of making the algorithm slower.</p>
+</div></blockquote>
+<p>use_classic : bool</p>
+<blockquote>
+<div><p>If given and True, the classic marching cubes by Lorensen (1987)</p>
+<p>is used. This option is included for reference purposes. Note</p>
+<p>that this algorithm has ambiguities and is not guaranteed to</p>
+<p>produce a topologically correct result. The results with using</p>
+<p>this option are <em>not</em> generally the same as the</p>
+<p><code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code> function.</p>
+</div></blockquote>
+<p>Returns</p>
+<p>verts : (V, 3) array</p>
+<blockquote>
+<div><p>Spatial coordinates for V unique mesh vertices. Coordinate order</p>
+<p>matches input <cite>volume</cite> (M, N, P).</p>
+</div></blockquote>
+<p>faces : (F, 3) array</p>
+<blockquote>
+<div><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.</p>
+<p>This algorithm specifically outputs triangles, so each face has</p>
+<p>exactly three indices.</p>
+</div></blockquote>
+<p>normals : (V, 3) array</p>
+<blockquote>
+<div><p>The normal direction at each vertex, as calculated from the</p>
+<p>data.</p>
+</div></blockquote>
+<p>values : (V, ) array</p>
+<blockquote>
+<div><p>Gives a measure for the maximum value of the data in the local region</p>
+<p>near each vertex. This can be used by visualization tools to apply</p>
+<p>a colormap to the mesh.</p>
+</div></blockquote>
+<p>Notes</p>
+<p>The algorithm [1] is an improved version of Chernyaev’s Marching</p>
+<p>Cubes 33 algorithm. It is an efficient algorithm that relies on</p>
+<p>heavy use of lookup tables to handle the many different cases,</p>
+<p>keeping the algorithm relatively easy. This implementation is</p>
+<p>written in Cython, ported from Lewiner’s C++ implementation.</p>
+<p>To quantify the area of an isosurface generated by this algorithm, pass</p>
+<p>verts and faces to <cite>skimage.measure.mesh_surface_area</cite>.</p>
+<p>Regarding visualization of algorithm output, to contour a volume</p>
+<p>named <cite>myvolume</cite> about the level 0.0, using the <code class="docutils literal notranslate"><span class="pre">mayavi</span></code> package:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span> 
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">marching_cubes_lewiner</span><span class="p">(</span><span class="n">myvolume</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> 
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlab</span><span class="o">.</span><span class="n">triangular_mesh</span><span class="p">([</span><span class="n">vert</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
+
+
+
+<span class="gp">... </span>                     <span class="p">[</span><span class="n">vert</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
+
+
+
+<span class="gp">... </span>                     <span class="p">[</span><span class="n">vert</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
+
+
+
+<span class="gp">... </span>                     <span class="n">faces</span><span class="p">)</span> 
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mlab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+<p>Similarly using the <code class="docutils literal notranslate"><span class="pre">visvis</span></code> package:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">visvis</span> <span class="k">as</span> <span class="nn">vv</span> 
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">marching_cubes_lewiner</span><span class="p">(</span><span class="n">myvolume</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> 
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vv</span><span class="o">.</span><span class="n">mesh</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fliplr</span><span class="p">(</span><span class="n">verts</span><span class="p">),</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span> 
+
+
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vv</span><span class="o">.</span><span class="n">use</span><span class="p">()</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span> 
+</pre></div>
+</div>
+<p>References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets">1</span></dt>
+<dd><p>Thomas Lewiner, Helio Lopes, Antonio Wilson Vieira and Geovan</p>
+<p>Tavares. Efficient implementation of Marching Cubes’ cases with</p>
+<p>topological guarantees. Journal of Graphics Tools 8(2)</p>
+<p>pp. 1-15 (december 2003).</p>
+<p><a href="#id7"><span class="problematic" id="id8">:DOI:`10.1080/10867651.2003.10487582`</span></a></p>
+</dd>
+</dl>
+<p>See Also</p>
+<p>skimage.measure.marching_cubes_classic</p>
+<p>skimage.measure.mesh_surface_area</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017-2020, CGRE-Aachen Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Solution/gempy.core.solution.Solution.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

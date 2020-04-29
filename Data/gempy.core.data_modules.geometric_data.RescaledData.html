@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>gempy.core.data_modules.geometric_data.RescaledData &#8212; GemPy 2.1.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery-dataframe.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="gempy.core.interpolator.InterpolatorModel" href="../Interpolator/gempy.core.interpolator.InterpolatorModel.html" />
+    <link rel="prev" title="gempy.core.data_modules.geometric_data.Orientations" href="gempy.core.data_modules.geometric_data.Orientations.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/./logos/gempy.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">GemPy</h1>
+    
+  </a>
+</p>
+
+
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=cgre-aachen&repo=gempy&type=star&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+    
+
+<p>
+<a class="badge" href="https://travis-ci.org/cgre-aachen/gempy">
+    <img
+        alt="https://secure.travis-ci.org/cgre-aachen/gempy.svg?branch=master"
+        src="https://secure.travis-ci.org/cgre-aachen/gempy.svg?branch=master"
+    />
+</a>
+</p>
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">GemPy</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../code.html">Code</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../code.html#gempy-api">GemPy API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#model">Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#plot">Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#data">Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#grids">Grids</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../code.html#geometric-data">Geometric Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#interpolator">Interpolator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code.html#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Getting started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">GemPy Tutorials</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../code.html">Code</a><ul>
+      <li>Previous: <a href="gempy.core.data_modules.geometric_data.Orientations.html" title="previous chapter">gempy.core.data_modules.geometric_data.Orientations</a></li>
+      <li>Next: <a href="../Interpolator/gempy.core.interpolator.InterpolatorModel.html" title="next chapter">gempy.core.interpolator.InterpolatorModel</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="gempy-core-data-modules-geometric-data-rescaleddata">
+<h1>gempy.core.data_modules.geometric_data.RescaledData<a class="headerlink" href="#gempy-core-data-modules-geometric-data-rescaleddata" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData">
+<em class="property">class </em><code class="sig-prename descclassname">gempy.core.data_modules.geometric_data.</code><code class="sig-name descname">RescaledData</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface_points</span><span class="p">:</span> <span class="n"><a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints">gempy.core.data_modules.geometric_data.SurfacePoints</a></span></em>, <em class="sig-param"><span class="n">orientations</span><span class="p">:</span> <span class="n"><a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations">gempy.core.data_modules.geometric_data.Orientations</a></span></em>, <em class="sig-param"><span class="n">grid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="gempy.core.data.Grid.html#gempy.core.data.Grid" title="gempy.core.data.Grid">gempy.core.data.Grid</a></span></em>, <em class="sig-param"><span class="n">rescaling_factor</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">centers</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span>pandas.core.frame.DataFrame<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auxiliary class to rescale the coordinates between 0 and 1 to increase float stability.</p>
+<dl class="py attribute">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.df">
+<code class="sig-name descname">df</code><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Data frame containing the rescaling factor and centers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">pn.DataFrame</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.surface_points">
+<code class="sig-name descname">surface_points</code><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s0] Data child with specific methods to manipulate interface data. It is initialize without arguments to giveflexibility to the origin of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePoints</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.orientations">
+<code class="sig-name descname">orientations</code><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.orientations" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s1] Data child with specific methods to manipulate orientation data. It is initialize without arguments to giveflexibility to the origin of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orientations</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.grid">
+<code class="sig-name descname">grid</code><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>[s2]  Class to generate grids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_points</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePoints</span></code></a>) – </p></li>
+<li><p><strong>orientations</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orientations</span></code></a>) – </p></li>
+<li><p><strong>grid</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code>) – </p></li>
+<li><p><strong>rescaling_factor</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – value which divide all coordinates</p></li>
+<li><p><strong>centers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>]</em>) – New center of the coordinates after shifting</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples using RescaledData</p>
+<div class="sphx-glr-clear"></div><p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.__init__" title="gempy.core.data_modules.geometric_data.RescaledData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(surface_points, orientations, grid)</p></td>
+<td><p>Initialize self.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.compute_data_center" title="gempy.core.data_modules.geometric_data.RescaledData.compute_data_center"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_data_center</span></code></a>([surface_points, …])</p></td>
+<td><p>Calculate the center of the data once it is shifted between 0 and 1.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.compute_rescaling_factor" title="gempy.core.data_modules.geometric_data.RescaledData.compute_rescaling_factor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compute_rescaling_factor</span></code></a>([surface_points, …])</p></td>
+<td><p>Calculate the rescaling factor of the data to keep all coordinates between 0 and 1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_orientations" title="gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_orientations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rescaled_orientations</span></code></a>()</p></td>
+<td><p>Get the rescaled coordinates. return an image of the interface and orientations categories_df with the X_r..</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_surface_points" title="gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_surface_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rescaled_surface_points</span></code></a>()</p></td>
+<td><p>Get the rescaled coordinates. return an image of the interface and orientations categories_df with the X_r..</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.max_min_coord" title="gempy.core.data_modules.geometric_data.RescaledData.max_min_coord"><code class="xref py py-obj docutils literal notranslate"><span class="pre">max_min_coord</span></code></a>([surface_points, orientations])</p></td>
+<td><p>Find the maximum and minimum location of any input data in each cartesian coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.modify_rescaling_parameters" title="gempy.core.data_modules.geometric_data.RescaledData.modify_rescaling_parameters"><code class="xref py py-obj docutils literal notranslate"><span class="pre">modify_rescaling_parameters</span></code></a>(attribute, value)</p></td>
+<td><p>Modify the parameters used to rescale data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_data" title="gempy.core.data_modules.geometric_data.RescaledData.rescale_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_data</span></code></a>([rescaling_factor, centers])</p></td>
+<td><p>Rescale inplace: surface_points, orientations—adding columns in the categories_df—and grid—adding values_r attributes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_data_point" title="gempy.core.data_modules.geometric_data.RescaledData.rescale_data_point"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_data_point</span></code></a>(data_points[, …])</p></td>
+<td><p>This method now is very similar to set_rescaled_surface_points passing an index</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_grid" title="gempy.core.data_modules.geometric_data.RescaledData.rescale_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_grid</span></code></a>(grid, rescaling_factor, centers)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_orientations" title="gempy.core.data_modules.geometric_data.RescaledData.rescale_orientations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_orientations</span></code></a>(orientations, …[, idx])</p></td>
+<td><p>Rescale inplace: surface_points.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_surface_points" title="gempy.core.data_modules.geometric_data.RescaledData.rescale_surface_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_surface_points</span></code></a>(surface_points, …)</p></td>
+<td><p>Rescale inplace: surface_points.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_grid" title="gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_grid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rescaled_grid</span></code></a>()</p></td>
+<td><p>Set the rescaled coordinates and extent into a grid object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_orientations" title="gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_orientations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rescaled_orientations</span></code></a>([idx])</p></td>
+<td><p>Set the rescaled coordinates into the surface_points categories_df</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_surface_points" title="gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_surface_points"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rescaled_surface_points</span></code></a>([idx])</p></td>
+<td><p>Set the rescaled coordinates into the surface_points categories_df</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface_points</span><span class="p">:</span> <span class="n"><a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints">gempy.core.data_modules.geometric_data.SurfacePoints</a></span></em>, <em class="sig-param"><span class="n">orientations</span><span class="p">:</span> <span class="n"><a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations">gempy.core.data_modules.geometric_data.Orientations</a></span></em>, <em class="sig-param"><span class="n">grid</span><span class="p">:</span> <span class="n"><a class="reference internal" href="gempy.core.data.Grid.html#gempy.core.data.Grid" title="gempy.core.data.Grid">gempy.core.data.Grid</a></span></em>, <em class="sig-param"><span class="n">rescaling_factor</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">centers</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span>pandas.core.frame.DataFrame<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.modify_rescaling_parameters">
+<code class="sig-name descname">modify_rescaling_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">attribute</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.modify_rescaling_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.modify_rescaling_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modify the parameters used to rescale data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attribute</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.8)"><em>str</em></a>) – Attribute to be modified. It can be: centers, rescaling factor
+* centers: [s0] (numpy.ndarray[float, 3]): XYZ array with the center of the data. This controls how much we shift the input coordinate
+* rescaling factor: [s1] Scaling factor by which all the parameters will be rescaled</p></li>
+<li><p><strong>value</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>, </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">gempy.core.data_modules.geometric_data.Rescaling</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.rescale_data">
+<code class="sig-name descname">rescale_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rescaling_factor</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">centers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.rescale_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rescale inplace: surface_points, orientations—adding columns in the categories_df—and grid—adding values_r
+attributes. The rescaled values will get stored on the linked objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rescaling_factor</strong> – [s1] Scaling factor by which all the parameters will be rescaled</p></li>
+<li><p><strong>centers</strong> – [s0] (numpy.ndarray[float, 3]): XYZ array with the center of the data. This controls how much we shift the input coordinate</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_surface_points">
+<code class="sig-name descname">get_rescaled_surface_points</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.get_rescaled_surface_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Get the rescaled coordinates. return an image of the interface and orientations categories_df with the X_r..</dt><dd><p>columns</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">SurfacePoints.df[['X_r',</span> <span class="pre">'Y_r',</span> <span class="pre">'Z_r']]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_orientations">
+<code class="sig-name descname">get_rescaled_orientations</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.get_rescaled_orientations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.get_rescaled_orientations" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Get the rescaled coordinates. return an image of the interface and orientations categories_df with the X_r..</dt><dd><p>columns.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="xref py py-attr docutils literal notranslate"><span class="pre">Orientations.df[['X_r',</span> <span class="pre">'Y_r',</span> <span class="pre">'Z_r']]</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.max_min_coord">
+<em class="property">static </em><code class="sig-name descname">max_min_coord</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface_points</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">orientations</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.max_min_coord"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.max_min_coord" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the maximum and minimum location of any input data in each cartesian coordinate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_points</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePoints</span></code></a>) – [s0] Data child with specific methods to manipulate interface data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>orientations</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orientations</span></code></a>) – [s1] Data child with specific methods to manipulate orientation data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>max[XYZ], min[XYZ]</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.8)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.compute_data_center">
+<code class="sig-name descname">compute_data_center</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface_points</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">orientations</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_coord</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">min_coord</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.compute_data_center"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.compute_data_center" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the center of the data once it is shifted between 0 and 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_points</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePoints</span></code></a>) – [s0] Data child with specific methods to manipulate interface data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>orientations</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orientations</span></code></a>) – [s1] Data child with specific methods to manipulate orientation data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>max_coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Max XYZ coordinates of all GeometricData</p></li>
+<li><p><strong>min_coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Min XYZ coordinates of all GeometricData</p></li>
+<li><p><strong>inplace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – if True modify the self.df rescaling factor attribute</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[s2] (numpy.ndarray[float, 3]): XYZ array with the center of the data. This controls how much we shift the input coordinate</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.compute_rescaling_factor">
+<code class="sig-name descname">compute_rescaling_factor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface_points</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">orientations</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_coord</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">min_coord</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inplace</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.compute_rescaling_factor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.compute_rescaling_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the rescaling factor of the data to keep all coordinates between 0 and 1</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_points</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePoints</span></code></a>) – [s0] Data child with specific methods to manipulate interface data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>orientations</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orientations</span></code></a>) – [s1] Data child with specific methods to manipulate orientation data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>max_coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Max XYZ coordinates of all GeometricData</p></li>
+<li><p><strong>min_coord</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)"><em>float</em></a>) – Min XYZ coordinates of all GeometricData</p></li>
+<li><p><strong>inplace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.8)"><em>bool</em></a>) – if True modify the self.df rescaling factor attribute</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>[s2] Scaling factor by which all the parameters will be rescaled</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.8)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.rescale_surface_points">
+<em class="property">static </em><code class="sig-name descname">rescale_surface_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">surface_points</span></em>, <em class="sig-param"><span class="n">rescaling_factor</span></em>, <em class="sig-param"><span class="n">centers</span></em>, <em class="sig-param"><span class="n">idx</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.rescale_surface_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rescale inplace: surface_points. The rescaled values will get stored on the linked objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>surface_points</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.SurfacePoints.html#gempy.core.data_modules.geometric_data.SurfacePoints" title="gempy.core.data_modules.geometric_data.SurfacePoints"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfacePoints</span></code></a>) – [s0] Data child with specific methods to manipulate interface data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>rescaling_factor</strong> – [s2]     Calculate the rescaling factor of the data to keep all coordinates between 0 and 1</p></li>
+<li><p><strong>centers</strong> – [s1]     Calculate the center of the data once it is shifted between 0 and 1.</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>list of int</em>) – [s3] (int, list, numpy.ndarray): If passed, list of indices where the function will be applied</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_surface_points">
+<code class="sig-name descname">set_rescaled_surface_points</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idx</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.set_rescaled_surface_points"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_surface_points" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the rescaled coordinates into the surface_points categories_df</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>list of int</em>) – [s0] (int, list, numpy.ndarray): If passed, list of indices where the function will be applied</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.rescale_data_point">
+<code class="sig-name descname">rescale_data_point</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data_points</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a></span></em>, <em class="sig-param"><span class="n">rescaling_factor</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">centers</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.rescale_data_point"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_data_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method now is very similar to set_rescaled_surface_points passing an index</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.rescale_orientations">
+<em class="property">static </em><code class="sig-name descname">rescale_orientations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">orientations</span></em>, <em class="sig-param"><span class="n">rescaling_factor</span></em>, <em class="sig-param"><span class="n">centers</span></em>, <em class="sig-param"><span class="n">idx</span><span class="p">:</span> <span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.rescale_orientations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_orientations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rescale inplace: surface_points. The rescaled values will get stored on the linked objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orientations</strong> (<a class="reference internal" href="gempy.core.data_modules.geometric_data.Orientations.html#gempy.core.data_modules.geometric_data.Orientations" title="gempy.core.data_modules.geometric_data.Orientations"><code class="xref py py-class docutils literal notranslate"><span class="pre">Orientations</span></code></a>) – [s0] Data child with specific methods to manipulate orientation data. It is initialize without arguments to giveflexibility to the origin of the data.</p></li>
+<li><p><strong>rescaling_factor</strong> – [s2]     Calculate the rescaling factor of the data to keep all coordinates between 0 and 1</p></li>
+<li><p><strong>centers</strong> – [s1]     Calculate the center of the data once it is shifted between 0 and 1.</p></li>
+<li><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>list of int</em>) – [s3] (int, list, numpy.ndarray): If passed, list of indices where the function will be applied</p></li>
+</ul>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_orientations">
+<code class="sig-name descname">set_rescaled_orientations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idx</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.8)">list</a><span class="p">, </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.18)">numpy.ndarray</a><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.set_rescaled_orientations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_orientations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the rescaled coordinates into the surface_points categories_df</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>idx</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.8)"><em>int</em></a><em>, </em><em>list of int</em>) – [s0] (int, list, numpy.ndarray): If passed, list of indices where the function will be applied</p>
+</dd>
+</dl>
+<p>Returns:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.rescale_grid">
+<em class="property">static </em><code class="sig-name descname">rescale_grid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">grid</span></em>, <em class="sig-param"><span class="n">rescaling_factor</span></em>, <em class="sig-param"><span class="n">centers</span><span class="p">:</span> <span class="n">pandas.core.frame.DataFrame</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.rescale_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.rescale_grid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_grid">
+<code class="sig-name descname">set_rescaled_grid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/gempy/core/data_modules/geometric_data.html#RescaledData.set_rescaled_grid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#gempy.core.data_modules.geometric_data.RescaledData.set_rescaled_grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the rescaled coordinates and extent into a grid object</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017-2020, CGRE-Aachen Team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.0.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Data/gempy.core.data_modules.geometric_data.RescaledData.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

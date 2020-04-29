@@ -1,0 +1,12 @@
+
+:orphan:
+
+.. _sphx_glr_examples_ch1-Fundamentals_sg_execution_times:
+
+Computation times
+=================
+**01:42.926** total execution time for **examples_ch1-Fundamentals** files:
+
++---------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_examples_ch1-Fundamentals_ch1-1_basics.py` (``ch1-1_basics.py``) | 01:42.926 | 0.0 MB |
++---------------------------------------------------------------------------------+-----------+--------+
